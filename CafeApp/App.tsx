@@ -1,63 +1,28 @@
 import React from 'react';
-import {
-  Alert,
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
+import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {LoginScreen} from './screens/loginScreen';
+import {ProductsScreen} from './screens/productsScreen';
+import {ProductScreen} from './screens/productScreen';
 
-import {Colors, Header} from 'react-native/Libraries/NewAppScreen';
-import {ButtonTypes, Button} from './components/buttonWrapper';
-import {Section} from './components/section';
-
-const App = () => {
-  const isDarkMode = useColorScheme() === 'dark';
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
-
-  return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <View style={{margin: 20}}>
-            <Button
-              type={ButtonTypes.Primary}
-              title="Login"
-              onPress={() => Alert.alert('Login')}
-            />
-            <Button
-              type={ButtonTypes.Secondary}
-              title="Register"
-              onPress={() => Alert.alert('Register')}
-            />
-          </View>
-        </View>
-      </ScrollView>
-    </SafeAreaView>
-  );
+export type RootStackParamList = {
+  Login: undefined;
+  Products: undefined;
+  Product: {productName: string};
 };
 
-const styles = StyleSheet.create({
-  highlight: {
-    fontWeight: '700',
-  },
-});
+const Stack = createNativeStackNavigator<RootStackParamList>();
+
+const App = () => {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="Login" component={LoginScreen} />
+        <Stack.Screen name="Products" component={ProductsScreen} />
+        <Stack.Screen name="Product" component={ProductScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+};
 
 export default App;
