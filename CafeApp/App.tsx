@@ -11,7 +11,7 @@ import {
 } from 'react-native';
 
 import {Colors, Header} from 'react-native/Libraries/NewAppScreen';
-import {ButtonTypes, ButtonWrapper} from './components/buttonWrapper';
+import {ButtonTypes, Button} from './components/buttonWrapper';
 import {Section} from './components/section';
 
 const App = () => {
@@ -36,16 +36,18 @@ const App = () => {
             Edit <Text style={styles.highlight}>App.tsx</Text> to change this
             screen and then come back to see your edits.
           </Section>
-          <ButtonWrapper
-            type={ButtonTypes.Primary}
-            title="Login"
-            onPress={() => Alert.alert('Login')}
-          />
-          <ButtonWrapper
-            type={ButtonTypes.Secondary}
-            title="Register"
-            onPress={() => Alert.alert('Register')}
-          />
+          <View style={{margin: 20}}>
+            <Button
+              type={ButtonTypes.Primary}
+              title="Login"
+              onPress={() => Alert.alert('Login')}
+            />
+            <Button
+              type={ButtonTypes.Secondary}
+              title="Register"
+              onPress={() => Alert.alert('Register')}
+            />
+          </View>
         </View>
       </ScrollView>
     </SafeAreaView>
