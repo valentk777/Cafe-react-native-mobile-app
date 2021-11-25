@@ -16,8 +16,18 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 const App = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="Login" component={LoginScreen} />
+      <Stack.Navigator
+        screenOptions={{
+          headerStyle: {
+            backgroundColor: '#E6E6E6',
+          },
+          headerTitleAlign: 'center',
+        }}>
+        <Stack.Screen
+          name="Login"
+          component={LoginScreen}
+          options={{title: 'Cafe App'}}
+        />
         <Stack.Screen name="Products" component={ProductsScreen} />
         <Stack.Screen name="Product" component={ProductScreen} />
       </Stack.Navigator>
