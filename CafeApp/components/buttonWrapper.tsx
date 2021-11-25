@@ -1,5 +1,5 @@
 import React from 'react';
-import {ButtonProps, Pressable, StyleSheet, Text, View} from 'react-native';
+import {ButtonProps, Pressable, StyleSheet, Text} from 'react-native';
 
 export enum ButtonTypes {
   Primary,
