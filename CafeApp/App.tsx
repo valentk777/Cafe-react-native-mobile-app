@@ -1,19 +1,32 @@
-import React from 'react';
-import {NavigationContainer} from '@react-navigation/native';
+import React, {useContext} from 'react';
+import {NavigationContainer, DarkTheme} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {LoginScreen} from './screens/loginScreen';
 import {ProductsScreen} from './screens/productsScreen';
 import {ProductScreen} from './screens/productScreen';
+import {ThemeContext, ThemeProvider} from './contexts/themeContext';
+import {Switch} from 'react-native';
+import {Product} from './entities/product';
 
 export type RootStackParamList = {
   Login: undefined;
   Products: undefined;
-  Product: {productName: string};
+  Product: {product: Product};
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 const App = () => {
+  return (
+    <ThemeProvider>
+      <AppComponent />
+    </ThemeProvider>
+  );
+};
+
+export const AppComponent = () => {
+  const {isDarkMode, theme, toggleTheme} = useContext(ThemeContext);
+
   return (
     <NavigationContainer>
       <Stack.Navigator
@@ -26,10 +39,31 @@ const App = () => {
         <Stack.Screen
           name="Login"
           component={LoginScreen}
-          options={{title: 'Cafe App'}}
+          options={{
+            title: 'Cafe App',
+            headerRight: () => (
+              <Switch value={isDarkMode} onValueChange={toggleTheme} />
+            ),
+          }}
         />
-        <Stack.Screen name="Products" component={ProductsScreen} />
-        <Stack.Screen name="Product" component={ProductScreen} />
+        <Stack.Screen
+          name="Products"
+          component={ProductsScreen}
+          options={{
+            headerRight: () => (
+              <Switch value={isDarkMode} onValueChange={toggleTheme} />
+            ),
+          }}
+        />
+        <Stack.Screen
+          name="Product"
+          component={ProductScreen}
+          options={{
+            headerRight: () => (
+              <Switch value={isDarkMode} onValueChange={toggleTheme} />
+            ),
+          }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
