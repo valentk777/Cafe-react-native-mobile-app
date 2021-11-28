@@ -4,14 +4,14 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {LoginScreen} from './screens/loginScreen';
 import {ProductsScreen} from './screens/productsScreen';
 import {ProductScreen} from './screens/productScreen';
-import {ThemeContext} from './contexts/themeContext';
+import {ThemeContext, ThemeProvider} from './contexts/themeContext';
 import {Switch} from 'react-native';
-import {ThemeProvider} from './components/theme/themeProvider';
+import {Product} from './entities/product';
 
 export type RootStackParamList = {
   Login: undefined;
   Products: undefined;
-  Product: {productName: string};
+  Product: {product: Product};
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();

@@ -1,5 +1,4 @@
-// This is our products database for now. Later we will replace this with database and redux state
-export const globoProducts = [
+export const globalProductsDB = [
   {
     productId: '08a08a53-f3a0-42cf-95ff-f3220d82a09d',
     label: 'Test',

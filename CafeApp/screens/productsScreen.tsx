@@ -3,27 +3,20 @@ import React from 'react';
 import {FlatList, SafeAreaView, StyleSheet, View} from 'react-native';
 import {RootStackParamList} from '../App';
 import {PressableTile} from '../components/tile/pressableTile';
-import {globoProducts} from '../database/productsDB';
+import {globalProductsDB} from '../database/productsDB';
+import {Product} from '../entities/product';
 
 type ProductsScreenProps = NativeStackScreenProps<
   RootStackParamList,
   'Products'
 >;
 
-interface ProductProps {
-  productId: string;
-  label: string;
-  title: string;
-  description: string;
-  image: string;
-}
-
 export const ProductsScreen = (props: ProductsScreenProps) => {
-  const renderItem = ({item}: {item: ProductProps}) => {
+  const renderItem = ({item}: {item: Product}) => {
     return (
       <PressableTile
         title={item.title}
-        image={item.image}
+        product={item}
         onPress={() => props.navigation.push('Product', {product: item})}
       />
     );
@@ -32,7 +25,7 @@ export const ProductsScreen = (props: ProductsScreenProps) => {
   return (
     <SafeAreaView style={styles.container}>
       <FlatList
-        data={globoProducts}
+        data={globalProductsDB}
         renderItem={renderItem}
         keyExtractor={item => item.productId}
         numColumns={2}

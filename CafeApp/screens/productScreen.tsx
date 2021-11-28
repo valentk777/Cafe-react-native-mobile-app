@@ -14,12 +14,7 @@ export const ProductScreen = ({route}: ProductScreenProps) => {
   return (
     <View style={styles.container}>
       <View style={styles.tileContainer}>
-        <Tile
-          label={route.params.product.label}
-          title={route.params.product.title}
-          description={route.params.product.description}
-          image={route.params.product.image}
-        />
+        <Tile product={route.params.product} />
       </View>
       <View style={styles.quantityContainer}>
         <Text style={styles.text}>Quantity</Text>
