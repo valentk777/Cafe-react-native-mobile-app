@@ -5,9 +5,11 @@ export enum ButtonTypes {
   Primary,
   Secondary,
 }
+
 interface ExpandedButtonProps extends ButtonProps {
   type: ButtonTypes;
 }
+
 export const Button = (props: ExpandedButtonProps) => {
   const {onPress, title, type} = props;
   return (

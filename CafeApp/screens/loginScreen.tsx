@@ -2,14 +2,14 @@ import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import React from 'react';
 import {Alert, StyleSheet, Text, View} from 'react-native';
 import {RootStackParamList} from '../App';
-import {Button, ButtonTypes} from '../components/buttonWrapper';
 import Icon from 'react-native-vector-icons/Feather';
+import {Button, ButtonTypes} from '../components/buttonWrapper';
 
 type LoginScreenProps = NativeStackScreenProps<RootStackParamList, 'Products'>;
 
 export const LoginScreen = (props: LoginScreenProps) => {
   return (
-    <View tyle={styles.loginScreen}>
+    <View style={styles.loginScreen}>
       <View style={styles.loginSection}>
         <Icon name="lock" size={70} color="#000" />
         <Text style={styles.loginText}>Login</Text>
