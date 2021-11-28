@@ -1,14 +1,14 @@
-import React, {useState} from 'react';
-import {Alert, Pressable, StyleSheet, Text, View} from 'react-native';
+import React from 'react';
+import {Pressable, StyleSheet, Text, View} from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
 
 interface QuantityProps {
-  passedCount: number;
+  count: number;
+  setCount: (newCount: number) => void;
 }
 
 export const Quantity = (props: QuantityProps) => {
-  const {passedCount} = props;
-  const [count, setCount] = useState(passedCount);
+  const {count, setCount} = props;
 
   return (
     <View style={styles.container}>

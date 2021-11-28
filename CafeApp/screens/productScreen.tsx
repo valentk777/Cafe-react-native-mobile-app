@@ -1,14 +1,16 @@
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
-import React from 'react';
+import React, {useState} from 'react';
 import {Alert, StyleSheet, Text, View} from 'react-native';
 import {RootStackParamList} from '../App';
 import {Button, ButtonTypes} from '../components/buttonWrapper';
-import { Quantity } from '../components/quantity';
+import {Quantity} from '../components/quantity';
 import {Tile} from '../components/tile/tile';
 
 type ProductScreenProps = NativeStackScreenProps<RootStackParamList, 'Product'>;
 
 export const ProductScreen = ({route}: ProductScreenProps) => {
+  const [count, setCount] = useState(0);
+
   return (
     <View style={styles.container}>
       <View style={styles.tileContainer}>
@@ -21,7 +23,7 @@ export const ProductScreen = ({route}: ProductScreenProps) => {
       </View>
       <View style={styles.quantityContainer}>
         <Text style={styles.text}>Quantity</Text>
-        <Quantity passedCount={0}/>
+        <Quantity count={count} setCount={setCount} />
       </View>
       <View style={styles.buttonContainer}>
         <Button
@@ -51,7 +53,6 @@ const styles = StyleSheet.create({
   quantityContainer: {
     height: '20%',
   },
-  //TODO: remove
   text: {
     marginLeft: 30,
     fontSize: 20,

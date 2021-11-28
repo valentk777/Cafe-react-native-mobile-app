@@ -1,18 +1,18 @@
 import React from 'react';
 import {StyleSheet, Text, Image, ButtonProps, Pressable} from 'react-native';
+import {Product} from '../../entities/product';
 
 interface TileProps extends ButtonProps {
-  title: string;
-  image: string;
+  product: Product;
 }
 
 export const PressableTile = (props: TileProps) => {
-  const {onPress, title, image} = props;
+  const {onPress, product} = props;
 
   return (
     <Pressable style={styles.container} onPress={onPress}>
-      <Image style={styles.image} source={{uri: image}} />
-      <Text style={styles.title}>{title}</Text>
+      <Image style={styles.image} source={{uri: product.image}} />
+      <Text style={styles.title}>{product.title}</Text>
     </Pressable>
   );
 };

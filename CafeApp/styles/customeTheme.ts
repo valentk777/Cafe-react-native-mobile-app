@@ -41,5 +41,6 @@ export const customeDarkTheme = {
     ...customeTheme.colors,
     background: palette.black,
     foreground: palette.white,
+    primary: palette.black,
   },
 };

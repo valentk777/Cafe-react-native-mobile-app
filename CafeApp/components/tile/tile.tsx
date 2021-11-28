@@ -1,15 +1,13 @@
 import React from 'react';
 import {StyleSheet, Text, View, Image} from 'react-native';
+import {Product} from '../../entities/product';
 
 interface TileProps {
-  label: string;
-  title: string;
-  description: string;
-  image: string;
+  product: Product;
 }
 
 export const Tile = (props: TileProps) => {
-  const {label, title, description, image} = props;
+  const {label, title, description, image} = props.product;
 
   return (
     <View style={styles.container}>
@@ -46,6 +44,6 @@ const styles = StyleSheet.create({
   },
   image: {
     width: '100%',
-    height:'70%',
+    height: '70%',
   },
 });

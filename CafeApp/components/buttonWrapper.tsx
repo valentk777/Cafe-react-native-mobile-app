@@ -1,7 +1,7 @@
 import React, {useContext} from 'react';
 import {ButtonProps, Pressable, StyleSheet, Text} from 'react-native';
-import {customeTheme} from './theme/customeTheme';
-import {ThemeContext} from './theme/themeContext';
+import {customeTheme} from '../styles/customeTheme';
+import {ThemeContext} from '../contexts/themeContext';
 
 export enum ButtonTypes {
   Primary,
@@ -15,7 +15,7 @@ interface ExpandedButtonProps extends ButtonProps {
 export const Button = (props: ExpandedButtonProps) => {
   const {onPress, title, type} = props;
 
-  const theme = useContext(ThemeContext);
+  const {theme} = useContext(ThemeContext);
   const styles = createStyles(theme);
 
   return (

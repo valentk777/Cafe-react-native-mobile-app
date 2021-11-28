@@ -21,13 +21,11 @@ interface ProductProps {
 export const ProductsScreen = (props: ProductsScreenProps) => {
   const renderItem = ({item}: {item: ProductProps}) => {
     return (
-      <View>
-        <PressableTile
-          title={item.title}
-          image={item.image}
-          onPress={() => props.navigation.push('Product', {product: item})}
-        />
-      </View>
+      <PressableTile
+        title={item.title}
+        image={item.image}
+        onPress={() => props.navigation.push('Product', {product: item})}
+      />
     );
   };
 
