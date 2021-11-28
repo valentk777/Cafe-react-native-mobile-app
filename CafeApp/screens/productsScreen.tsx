@@ -19,7 +19,6 @@ interface ProductProps {
 }
 
 export const ProductsScreen = (props: ProductsScreenProps) => {
-
   const renderItem = ({item}: {item: ProductProps}) => {
     return (
       <View>
@@ -34,7 +33,7 @@ export const ProductsScreen = (props: ProductsScreenProps) => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <FlatList 
+      <FlatList
         data={globoProducts}
         renderItem={renderItem}
         keyExtractor={item => item.productId}
@@ -48,10 +47,10 @@ export const ProductsScreen = (props: ProductsScreenProps) => {
 };
 
 const styles = StyleSheet.create({
-  container: {
-  },
+  container: {},
   columns: {
     justifyContent: 'space-around',
-    marginBottom: 30
-  }
+    marginBottom: 20,
+    marginTop: 20,
+  },
 });
