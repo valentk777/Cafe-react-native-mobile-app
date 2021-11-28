@@ -2,7 +2,7 @@ import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import React from 'react';
 import {FlatList, SafeAreaView, StyleSheet, View} from 'react-native';
 import {RootStackParamList} from '../App';
-import {PressableTile} from '../components/pressableTile';
+import {PressableTile} from '../components/tile/pressableTile';
 import {globoProducts} from '../database/productsDB';
 
 type ProductsScreenProps = NativeStackScreenProps<

@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import {NavigationContainer } from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {LoginScreen} from './screens/loginScreen';
 import {ProductsScreen} from './screens/productsScreen';
 import {ProductScreen} from './screens/productScreen';
 import {ThemeProvider} from './components/theme/themeProvider';
+import { ThemeContext } from './components/theme/themeContext';
 
 export type RootStackParamList = {
   Login: undefined;
@@ -15,6 +16,8 @@ export type RootStackParamList = {
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 const App = () => {
+  const theme = useContext(ThemeContext);
+  
   return (
     <ThemeProvider>
       <NavigationContainer>

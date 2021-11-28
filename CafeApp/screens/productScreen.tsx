@@ -3,7 +3,8 @@ import React from 'react';
 import {Alert, StyleSheet, Text, View} from 'react-native';
 import {RootStackParamList} from '../App';
 import {Button, ButtonTypes} from '../components/buttonWrapper';
-import {Tile} from '../components/tile';
+import { Quantity } from '../components/quantity';
+import {Tile} from '../components/tile/tile';
 
 type ProductScreenProps = NativeStackScreenProps<RootStackParamList, 'Product'>;
 
@@ -19,8 +20,8 @@ export const ProductScreen = ({route}: ProductScreenProps) => {
         />
       </View>
       <View style={styles.quantityContainer}>
-        {/* TODO: replace with quantity component */}
-        <Text style={styles.text}>Quantity component</Text>
+        <Text style={styles.text}>Quantity</Text>
+        <Quantity passedCount={0}/>
       </View>
       <View style={styles.buttonContainer}>
         <Button
@@ -52,8 +53,8 @@ const styles = StyleSheet.create({
   },
   //TODO: remove
   text: {
-    alignSelf: 'center',
-    fontSize: 40,
+    marginLeft: 30,
+    fontSize: 20,
   },
   buttonContainer: {
     height: '25%',
