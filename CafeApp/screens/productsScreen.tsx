@@ -23,7 +23,7 @@ export const ProductsScreen = (props: ProductsScreenProps) => {
   };
 
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView>
       <FlatList
         data={globalProductsDB}
         renderItem={renderItem}
@@ -38,7 +38,6 @@ export const ProductsScreen = (props: ProductsScreenProps) => {
 };
 
 const styles = StyleSheet.create({
-  container: {},
   columns: {
     justifyContent: 'space-around',
     marginBottom: 20,

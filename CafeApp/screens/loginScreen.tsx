@@ -9,7 +9,7 @@ type LoginScreenProps = NativeStackScreenProps<RootStackParamList, 'Products'>;
 
 export const LoginScreen = (props: LoginScreenProps) => {
   return (
-    <View style={styles.screen}>
+    <View>
       <View style={styles.section}>
         <Icon name="lock" size={70} color="#000" />
         <Text style={styles.text}>Login</Text>
@@ -31,7 +31,6 @@ export const LoginScreen = (props: LoginScreenProps) => {
 };
 
 const styles = StyleSheet.create({
-  screen: {},
   section: {
     alignItems: 'center',
     justifyContent: 'center',

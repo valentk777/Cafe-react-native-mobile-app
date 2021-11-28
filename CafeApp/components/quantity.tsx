@@ -12,19 +12,13 @@ export const Quantity = (props: QuantityProps) => {
 
   return (
     <View style={styles.container}>
-      <Pressable
-        style={styles.minus}
-        onPress={() => setCount(count - 1)}
-        disabled={count <= 0}>
+      <Pressable onPress={() => setCount(count - 1)} disabled={count <= 0}>
         <Icon name="minus" size={70} color="#000" />
       </Pressable>
       <View style={styles.number}>
         <Text style={styles.text}>{count}</Text>
       </View>
-      <Pressable
-        style={styles.plus}
-        onPress={() => setCount(count + 1)}
-        disabled={count > 20}>
+      <Pressable onPress={() => setCount(count + 1)} disabled={count > 20}>
         <Icon name="plus" size={70} color="#000" />
       </Pressable>
     </View>
@@ -37,8 +31,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  plus: {},
-  minus: {},
   number: {
     height: '80%',
     width: '50%',
