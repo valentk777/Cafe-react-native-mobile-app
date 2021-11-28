@@ -1,5 +1,7 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {ButtonProps, Pressable, StyleSheet, Text} from 'react-native';
+import {customeTheme} from './theme/customeTheme';
+import {ThemeContext} from './theme/themeContext';
 
 export enum ButtonTypes {
   Primary,
@@ -12,6 +14,10 @@ interface ExpandedButtonProps extends ButtonProps {
 
 export const Button = (props: ExpandedButtonProps) => {
   const {onPress, title, type} = props;
+
+  const theme = useContext(ThemeContext);
+  const styles = createStyles(theme);
+
   return (
     <Pressable
       style={
@@ -32,35 +38,38 @@ export const Button = (props: ExpandedButtonProps) => {
   );
 };
 
-const styles = StyleSheet.create({
-  buttonPrimary: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingVertical: 12,
-    borderRadius: 10,
-    backgroundColor: '#414BB2',
-    marginBottom: 20,
-  },
-  textPrimary: {
-    fontSize: 16,
-    lineHeight: 21,
-    fontWeight: 'bold',
-    color: 'white',
-  },
-  buttonSecondary: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingVertical: 12,
-    borderRadius: 10,
-    backgroundColor: 'white',
-    borderColor: '#414BB2',
-    borderWidth: 3,
-  },
-  textSecondary: {
-    fontSize: 16,
-    lineHeight: 21,
-    fontWeight: 'bold',
-    letterSpacing: 0.25,
-    color: '#414BB2',
-  },
-});
+const createStyles = (theme: typeof customeTheme) => {
+  const styles = StyleSheet.create({
+    buttonPrimary: {
+      alignItems: 'center',
+      justifyContent: 'center',
+      paddingVertical: 12,
+      borderRadius: 10,
+      backgroundColor: theme.colors.primary,
+      marginBottom: 20,
+    },
+    textPrimary: {
+      fontSize: 16,
+      lineHeight: 21,
+      fontWeight: 'bold',
+      color: theme.colors.secondary,
+    },
+    buttonSecondary: {
+      alignItems: 'center',
+      justifyContent: 'center',
+      paddingVertical: 12,
+      borderRadius: 10,
+      backgroundColor: theme.colors.secondary,
+      borderColor: theme.colors.primary,
+      borderWidth: 3,
+    },
+    textSecondary: {
+      fontSize: 16,
+      lineHeight: 21,
+      fontWeight: 'bold',
+      letterSpacing: 0.25,
+      color: theme.colors.primary,
+    },
+  });
+  return styles;
+};

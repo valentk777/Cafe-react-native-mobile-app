@@ -1,11 +1,5 @@
 import React from 'react';
-import {
-  StyleSheet,
-  Text,
-  Image,
-  ButtonProps,
-  Pressable,
-} from 'react-native';
+import {StyleSheet, Text, Image, ButtonProps, Pressable} from 'react-native';
 
 interface TileProps extends ButtonProps {
   title: string;
