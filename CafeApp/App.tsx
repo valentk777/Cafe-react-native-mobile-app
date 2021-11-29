@@ -1,5 +1,5 @@
 import React, {useContext} from 'react';
-import {NavigationContainer, DarkTheme} from '@react-navigation/native';
+import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {LoginScreen} from './screens/loginScreen';
 import {ProductsScreen} from './screens/productsScreen';
@@ -7,6 +7,10 @@ import {ProductScreen} from './screens/productScreen';
 import {ThemeContext, ThemeProvider} from './contexts/themeContext';
 import {Switch} from 'react-native';
 import {Product} from './entities/product';
+import {
+  AuthorizationContextProvider,
+  useAuthorizationContext,
+} from './contexts/authorizationContext';
 
 export type RootStackParamList = {
   Login: undefined;
@@ -19,14 +23,16 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 const App = () => {
   return (
     <ThemeProvider>
-      <AppComponent />
+      <AuthorizationContextProvider>
+        <AppComponent />
+      </AuthorizationContextProvider>
     </ThemeProvider>
   );
 };
 
 export const AppComponent = () => {
   const {isDarkMode, theme, toggleTheme} = useContext(ThemeContext);
-
+  const {isSignedIn} = useAuthorizationContext();
   return (
     <NavigationContainer>
       <Stack.Navigator
@@ -36,34 +42,41 @@ export const AppComponent = () => {
           },
           headerTitleAlign: 'center',
         }}>
-        <Stack.Screen
-          name="Login"
-          component={LoginScreen}
-          options={{
-            title: 'Cafe App',
-            headerRight: () => (
-              <Switch value={isDarkMode} onValueChange={toggleTheme} />
-            ),
-          }}
-        />
-        <Stack.Screen
-          name="Products"
-          component={ProductsScreen}
-          options={{
-            headerRight: () => (
-              <Switch value={isDarkMode} onValueChange={toggleTheme} />
-            ),
-          }}
-        />
-        <Stack.Screen
-          name="Product"
-          component={ProductScreen}
-          options={{
-            headerRight: () => (
-              <Switch value={isDarkMode} onValueChange={toggleTheme} />
-            ),
-          }}
-        />
+        {isSignedIn ? (
+          <>
+            <Stack.Screen
+              name="Products"
+              component={ProductsScreen}
+              options={{
+                headerRight: () => (
+                  <Switch value={isDarkMode} onValueChange={toggleTheme} />
+                ),
+              }}
+            />
+            <Stack.Screen
+              name="Product"
+              component={ProductScreen}
+              options={{
+                headerRight: () => (
+                  <Switch value={isDarkMode} onValueChange={toggleTheme} />
+                ),
+              }}
+            />
+          </>
+        ) : (
+          <>
+            <Stack.Screen
+              name="Login"
+              component={LoginScreen}
+              options={{
+                title: 'Cafe App',
+                headerRight: () => (
+                  <Switch value={isDarkMode} onValueChange={toggleTheme} />
+                ),
+              }}
+            />
+          </>
+        )}
       </Stack.Navigator>
     </NavigationContainer>
   );
