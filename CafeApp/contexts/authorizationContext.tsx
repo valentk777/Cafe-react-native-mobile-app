@@ -1,12 +1,15 @@
 import React, {useState, ProviderProps} from 'react';
+
 interface IAuthorizationContext {
   isSignedIn: boolean;
   signIn: () => void;
 }
+
 export const AuthorizationContext = React.createContext<IAuthorizationContext>({
   isSignedIn: false,
   signIn: () => {},
 });
+
 export interface AppContextProviderProps
   extends Omit<ProviderProps<IAuthorizationContext>, 'value'> {}
 
@@ -15,10 +18,8 @@ export const AuthorizationContextProvider = (
 ) => {
   const [isSignedIn, setIsSignedIn] = useState<boolean>(false);
   const signIn = () => {
-    setIsSignedIn(!isSignedIn);
-    // console.log('signin', isSignedIn);
+    setIsSignedIn(true);
   };
-  console.log('signin', isSignedIn);
   return (
     <AuthorizationContext.Provider
       value={{

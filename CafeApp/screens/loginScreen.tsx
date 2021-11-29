@@ -2,9 +2,9 @@ import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import React from 'react';
 import {Alert, StyleSheet, Text, View} from 'react-native';
 import {RootStackParamList} from '../App';
-import {Button, ButtonTypes} from '../components/buttonWrapper';
 import Icon from 'react-native-vector-icons/Feather';
 import {useAuthorizationContext} from '../contexts/authorizationContext';
+import {Button, ButtonTypes} from '../components/buttonWrapper';
 
 interface LoginScreenProps
   extends NativeStackScreenProps<RootStackParamList, 'Login'> {
@@ -14,18 +14,16 @@ interface LoginScreenProps
 export const LoginScreen = (props: LoginScreenProps) => {
   const {signIn} = useAuthorizationContext();
   return (
-    <View tyle={styles.loginScreen}>
-      <View style={styles.loginSection}>
+    <View>
+      <View style={styles.section}>
         <Icon name="lock" size={70} color="#000" />
-        <Text style={styles.loginText}>Login</Text>
+        <Text style={styles.text}>Login</Text>
       </View>
-
-      <View style={styles.loginButtonContainer}>
+      <View style={styles.buttonContainer}>
         <Button
           type={ButtonTypes.Primary}
           title="Login"
           onPress={() => {
-            console.log('click');
             signIn();
           }}
         />
@@ -38,21 +36,21 @@ export const LoginScreen = (props: LoginScreenProps) => {
     </View>
   );
 };
+
 const styles = StyleSheet.create({
-  loginScreen: {},
-  loginSection: {
+  section: {
     alignItems: 'center',
     justifyContent: 'center',
     height: '60%',
   },
-  loginText: {
+  text: {
     fontSize: 20,
     lineHeight: 21,
     fontWeight: 'bold',
     color: 'black',
     marginTop: 10,
   },
-  loginButtonContainer: {
+  buttonContainer: {
     margin: 20,
   },
 });
