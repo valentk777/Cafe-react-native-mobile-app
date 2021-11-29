@@ -4,10 +4,15 @@ import {Alert, StyleSheet, Text, View} from 'react-native';
 import {RootStackParamList} from '../App';
 import {Button, ButtonTypes} from '../components/buttonWrapper';
 import Icon from 'react-native-vector-icons/Feather';
+import {useAuthorizationContext} from '../contexts/authorizationContext';
 
-type LoginScreenProps = NativeStackScreenProps<RootStackParamList, 'Products'>;
+interface LoginScreenProps
+  extends NativeStackScreenProps<RootStackParamList, 'Login'> {
+  setIsLoggedIn: (isAuthenticated: boolean) => void;
+}
 
 export const LoginScreen = (props: LoginScreenProps) => {
+  const {signIn} = useAuthorizationContext();
   return (
     <View tyle={styles.loginScreen}>
       <View style={styles.loginSection}>
@@ -19,7 +24,10 @@ export const LoginScreen = (props: LoginScreenProps) => {
         <Button
           type={ButtonTypes.Primary}
           title="Login"
-          onPress={() => props.navigation.push('Products')}
+          onPress={() => {
+            console.log('click');
+            signIn();
+          }}
         />
         <Button
           type={ButtonTypes.Secondary}
