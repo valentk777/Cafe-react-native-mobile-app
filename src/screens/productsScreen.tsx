@@ -1,8 +1,8 @@
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import React from 'react';
 import {FlatList, SafeAreaView, StyleSheet, View} from 'react-native';
-import {RootStackParamList} from '../App';
-import {PressableTile} from '../components/tile/pressableTile';
+import {RootStackParamList} from '../../App';
+import {PressableTile} from '../components/Tile/PressableTile';
 import {globalProductsDB} from '../database/productsDB';
 import {Product} from '../entities/product';
 

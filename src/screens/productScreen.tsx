@@ -1,10 +1,10 @@
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import React, {useState} from 'react';
 import {Alert, StyleSheet, Text, View} from 'react-native';
-import {RootStackParamList} from '../App';
-import {Button, ButtonTypes} from '../components/buttonWrapper';
-import {Quantity} from '../components/quantity';
-import {Tile} from '../components/tile/tile';
+import {RootStackParamList} from '../../App';
+import {Button, ButtonTypes} from '../components/ButtonWrapper/ButtonWrapper';
+import {Quantity} from '../components/Quantity/Quantity';
+import {Tile} from '../components/Tile/Tile';
 
 type ProductScreenProps = NativeStackScreenProps<RootStackParamList, 'Product'>;
 
