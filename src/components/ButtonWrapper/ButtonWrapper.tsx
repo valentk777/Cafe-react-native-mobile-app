@@ -1,7 +1,7 @@
 import React, {useContext} from 'react';
 import {ButtonProps, Pressable, StyleSheet, Text} from 'react-native';
-import {customeTheme} from '../styles/customeTheme';
-import {ThemeContext} from '../contexts/themeContext';
+import {customeTheme} from '../../styles/customeTheme';
+import {ThemeContext} from '../../contexts/themeContext';
 
 export enum ButtonTypes {
   Primary,

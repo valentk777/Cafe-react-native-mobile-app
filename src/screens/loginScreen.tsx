@@ -1,10 +1,10 @@
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import React from 'react';
 import {Alert, StyleSheet, Text, View} from 'react-native';
-import {RootStackParamList} from '../App';
+import {RootStackParamList} from '../../App';
 import Icon from 'react-native-vector-icons/Feather';
 import {useAuthorizationContext} from '../contexts/authorizationContext';
-import {Button, ButtonTypes} from '../components/buttonWrapper';
+import {Button, ButtonTypes} from '../components/ButtonWrapper/ButtonWrapper';
 
 interface LoginScreenProps
   extends NativeStackScreenProps<RootStackParamList, 'Login'> {

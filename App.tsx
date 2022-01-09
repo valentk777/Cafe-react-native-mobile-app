@@ -1,16 +1,16 @@
 import React, {useContext} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {LoginScreen} from './screens/loginScreen';
-import {ProductsScreen} from './screens/productsScreen';
-import {ProductScreen} from './screens/productScreen';
-import {ThemeContext, ThemeProvider} from './contexts/themeContext';
+import {LoginScreen} from './src/screens/loginScreen';
+import {ProductsScreen} from './src/screens/productsScreen';
+import {ProductScreen} from './src/screens/productScreen';
+import {ThemeContext, ThemeProvider} from './src/contexts/themeContext';
 import {Switch} from 'react-native';
-import {Product} from './entities/product';
+import {Product} from './src/entities/product';
 import {
   AuthorizationContextProvider,
   useAuthorizationContext,
-} from './contexts/authorizationContext';
+} from './src/contexts/authorizationContext';
 
 export type RootStackParamList = {
   Login: undefined;
