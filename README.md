@@ -3,8 +3,8 @@
 ## Tech stack:
 
 - Node.Js v16.13.0
-- npm 8.1.0
-- Java 17.0.1
+- npm 8.13.0
+- Java 17.0.3
 
 ## Setting up environment:
 
